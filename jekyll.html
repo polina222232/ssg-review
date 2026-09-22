@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jekyll — обзор и примеры кода | SSG Review</title>
+  <meta name="description" content="Jekyll — SSG на Ruby: установка, конфигурация, Liquid, примеры кода">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.15.0/cdn/themes/light.css">
+  <script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.15.0/cdn/shoelace-autoloader.js"></script>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/prism.css">
+  <link rel="stylesheet" href="css/shoelace-override.css">
+</head>
+<body class="page">
+
+<header class="header" data-js="header">
+  <div class="header__inner">
+    <a href="index.html" class="header__logo">
+      <sl-icon name="layers" class="header__logo-icon"></sl-icon>
+      <span class="header__logo-text">SSG Review</span>
+    </a>
+    <nav class="header__nav" aria-label="Основная навигация">
+      <ul class="header__list">
+        <li class="header__item"><a href="index.html" class="header__link">Главная</a></li>
+        <li class="header__item"><a href="gatsby.html" class="header__link">Gatsby</a></li>
+        <li class="header__item"><a href="hugo.html" class="header__link">Hugo</a></li>
+        <li class="header__item"><a href="jekyll.html" class="header__link">Jekyll</a></li>
+        <li class="header__item"><a href="comparison.html" class="header__link">Сравнение</a></li>
+        <li class="header__item"><a href="code.html" class="header__link">Код</a></li>
+        <li class="header__item"><a href="usage.html" class="header__link">Кейсы</a></li>
+        <li class="header__item"><a href="video.html" class="header__link">Видео</a></li>
+        <li class="header__item"><a href="faq.html" class="header__link">FAQ</a></li>
+        <li class="header__item"><a href="contacts.html" class="header__link">Контакты</a></li>
+      </ul>
+    </nav>
+    <sl-icon-button name="list" label="Открыть меню" class="header__burger" data-js="burger"></sl-icon-button>
+  </div>
+</header>
+
+<sl-drawer label="Меню" placement="end" class="drawer" data-js="drawer">
+  <nav class="drawer__nav">
+    <ul class="drawer__list">
+      <li class="drawer__item"><a href="index.html" class="drawer__link">Главная</a></li>
+      <li class="drawer__item"><a href="gatsby.html" class="drawer__link">Gatsby</a></li>
+      <li class="drawer__item"><a href="hugo.html" class="drawer__link">Hugo</a></li>
+      <li class="drawer__item"><a href="jekyll.html" class="drawer__link">Jekyll</a></li>
+      <li class="drawer__item"><a href="comparison.html" class="drawer__link">Сравнение</a></li>
+      <li class="drawer__item"><a href="code.html" class="drawer__link">Код</a></li>
+      <li class="drawer__item"><a href="usage.html" class="drawer__link">Кейсы</a></li>
+      <li class="drawer__item"><a href="video.html" class="drawer__link">Видео</a></li>
+      <li class="drawer__item"><a href="faq.html" class="drawer__link">FAQ</a></li>
+      <li class="drawer__item"><a href="contacts.html" class="drawer__link">Контакты</a></li>
+    </ul>
+  </nav>
+  <div slot="footer" class="drawer__footer"><small>© 2025 Буренкова П. А.</small></div>
+</sl-drawer>
+
+<nav class="breadcrumbs" aria-label="Хлебные крошки">
+  <ol class="breadcrumbs__list">
+    <li class="breadcrumbs__item"><a href="index.html" class="breadcrumbs__link">Главная</a></li>
+    <li class="breadcrumbs__item"><span class="breadcrumbs__current">Jekyll</span></li>
+  </ol>
+</nav>
+
+<div class="layout">
+  <main class="layout__main">
+
+    <section class="section">
+      <h1 class="section__title">Jekyll</h1>
+      <p class="section__subtitle">Классический SSG на Ruby, встроенный в GitHub Pages.</p>
+      <div class="card card_bordered">
+        <div class="card__body">
+          <p class="card__text">
+            Jekyll — один из первых генераторов статических сайтов. Именно он
+            используется GitHub Pages по умолчанию. Отлично подходит для
+            блогов, портфолио и документации.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="features">
+      <h2 class="section__title">Ключевые особенности</h2>
+      <ul class="list list_marker_check">
+        <li class="list__item">Нативная поддержка GitHub Pages</li>
+        <li class="list__item">Шаблонизатор Liquid</li>
+        <li class="list__item">Markdown + Front Matter</li>
+        <li class="list__item">Плагины на Ruby</li>
+        <li class="list__item">Простая структура проекта</li>
+        <li class="list__item">Большое количество готовых тем</li>
+      </ul>
+    </section>
+
+    <section class="section" id="install">
+      <h2 class="section__title">Установка</h2>
+      <div class="code-block">
+        <div class="code-block__header">
+          <span class="code-block__lang">bash</span>
+          <button class="code-block__copy" data-js="copy">Копировать</button>
+        </div>
+        <pre class="code-block__body"><code class="language-bash"># Установка Ruby gem
+gem install jekyll bundler
+
+# Новый сайт
+jekyll new my-site
+cd my-site
+
+# Запуск dev-сервера
+bundle exec jekyll serve
+
+# Сборка
+bundle exec jekyll build
+
+# С указанием окружения
+JEKYLL_ENV=production bundle exec jekyll build</code></pre>
+      </div>
+    </section>
+
+    <section class="section" id="config">
+      <h2 class="section__title">Конфигурация _config.yml</h2>
+      <div class="code-block">
+        <div class="code-block__header">
+          <span class="code-block__lang">yaml</span>
+          <button class="code-block__copy" data-js="copy">Копировать</button>
+        </div>
+        <pre class="code-block__body"><code class="language-yaml">title: SSG Review
+description: Обзор Gatsby, Hugo, Jekyll
+author: Буренкова Полина
+email: polina@example.com
+baseurl: ""
+url: "https://bur-polina.github.io"
+
+theme: minima
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-sitemap
+
+markdown: kramdown
+highlighter: rouge
+
+permalink: /:categories/:year/:month/:day/:title/
+
+collections:
+  projects:
+    output: true
+    permalink: /projects/:name/
+
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+      author: "Буренкова П. А."</code></pre>
+      </div>
+    </section>
+
+    <section class="section" id="liquid">
+      <h2 class="section__title">Liquid-шаблоны</h2>
+
+      <h3 class="code-block__subtitle">Список постов — index.html</h3>
+      <div class="code-block">
+        <div class="code-block__header">
+          <span class="code-block__lang">liquid</span>
+          <button class="code-block__copy" data-js="copy">Копировать</button>
+        </div>
+        <pre class="code-block__body"><code class="language-liquid">---
+layout: default
+title: Блог
+---
+
+&lt;h1&gt;{{ page.title }}&lt;/h1&gt;
+
+&lt;ul class="post-list"&gt;
+  {% for post in site.posts %}
+    &lt;li class="post-list__item"&gt;
+      &lt;time datetime="{{ post.date | date_to_xmlschema }}"&gt;
+        {{ post.date | date: "%d.%m.%Y" }}
+      &lt;/time&gt;
+      &lt;h2&gt;
+        &lt;a href="{{ post.url | relative_url }}"&gt;{{ post.title }}&lt;/a&gt;
+      &lt;/h2&gt;
+      &lt;p&gt;{{ post.excerpt | strip_html | truncatewords: 30 }}&lt;/p&gt;
+      {% if post.tags.size &gt; 0 %}
+        &lt;ul class="tag-list"&gt;
+          {% for tag in post.tags %}
+            &lt;li class="tag-list__item"&gt;{{ tag }}&lt;/li&gt;
+          {% endfor %}
+        &lt;/ul&gt;
+      {% endif %}
+    &lt;/li&gt;
+  {% endfor %}
+&lt;/ul&gt;</code></pre>
+      </div>
+
+      <h3 class="code-block__subtitle">Layout — _layouts/post.html</h3>
+      <div class="code-block">
+        <div class="code-block__header">
+          <span class="code-block__lang">liquid</span>
+          <button class="code-block__copy" data-js="copy">Копировать</button>
+        </div>
+        <pre class="code-block__body"><code class="language-liquid">---
+layout: default
+---
+&lt;article class="post"&gt;
+  &lt;header class="post__header"&gt;
+    &lt;h1&gt;{{ page.title }}&lt;/h1&gt;
+    &lt;time datetime="{{ page.date | date_to_xmlschema }}"&gt;
+      {{ page.date | date: "%d.%m.%Y" }}
+    &lt;/time&gt;
+    {% if page.author %}&lt;p&gt;Автор: {{ page.author }}&lt;/p&gt;{% endif %}
+  &lt;/header&gt;
+  &lt;div class="post__content"&gt;
+    {{ content }}
+  &lt;/div&gt;
+&lt;/article&gt;</code></pre>
+      </div>
+    </section>
+
+    <section class="section" id="post">
+      <h2 class="section__title">Пример поста</h2>
+      <div class="code-block">
+        <div class="code-block__header">
+          <span class="code-block__lang">markdown</span>
+          <button class="code-block__copy" data-js="copy">Копировать</button>
+        </div>
+        <pre class="code-block__body"><code class="language-markdown">---
+layout: post
+title: "Обзор Jekyll"
+date: 2025-01-15 10:00:00 +0300
+categories: [ssg, ruby]
+tags: [jekyll, github-pages]
+image: /assets/img/jekyll.webp
+---
+
+Jekyll — классический генератор статических сайтов на Ruby.
+
+## Установка
+
+```bash
+gem install jekyll bundler
+Особенности
+Нативно работает с GitHub Pages
+
+Шаблонизатор Liquid
+
+Простая структура проекта</code></pre>
+
+</div> </section> <section class="section" id="deploy"> <h2 class="section__title">Деплой на GitHub Pages</h2> <div class="code-block"> <div class="code-block__header"> <span class="code-block__lang">yaml</span> <button class="code-block__copy" data-js="copy">Копировать</button> </div> <pre class="code-block__body"><code class="language-yaml"># .github/workflows/jekyll.yml
+name: Build and Deploy Jekyll
+on:
+push:
+branches: [main]
+permissions:
+contents: read
+pages: write
+id-token: write
+jobs:
+build:
+runs-on: ubuntu-latest
+steps:
+
+uses: actions/checkout@v4
+
+uses: ruby/setup-ruby@v1
+with:
+ruby-version: '3.2'
+bundler-cache: true
+
+run: bundle exec jekyll build
+
+uses: actions/upload-pages-artifact@v3
+with:
+path: _site
+deploy:
+needs: build
+runs-on: ubuntu-latest
+environment:
+name: github-pages
+steps:
+
+uses: actions/deploy-pages@v4</code></pre>
+
+</div>
+  </section> <section class="section"> <h2 class="section__title">Плюсы и минусы</h2> <div class="grid grid_cols_2"> <article class="card card_bordered"> <div class="card__header"> <sl-icon name="hand-thumbs-up" class="card__icon"></sl-icon> <h3 class="card__title">Плюсы</h3> </div> <div class="card__body"> <ul class="list list_marker_check"> <li class="list__item">Встроен в GitHub Pages</li> <li class="list__item">Простая структура</li> <li class="list__item">Много готовых тем</li> <li class="list__item">Liquid-шаблоны</li> </ul> </div> </article> <article class="card card_bordered"> <div class="card__header"> <sl-icon name="hand-thumbs-down" class="card__icon"></sl-icon> <h3 class="card__title">Минусы</h3> </div> <div class="card__body"> <ul class="list list_marker_check"> <li class="list__item">Медленная сборка</li> <li class="list__item">Требует Ruby</li> <li class="list__item">Плагины ограничены на GitHub Pages</li> </ul> </div> </article> </div> </section> <nav class="pagination"> <sl-button href="hugo.html" variant="default"> <sl-icon slot="prefix" name="arrow-left"></sl-icon>Назад: Hugo </sl-button> <sl-button href="comparison.html" variant="primary"> Далее: Сравнение<sl-icon slot="suffix" name="arrow-right"></sl-icon> </sl-button> </nav> </main> <aside class="layout__aside"> <div class="aside__card"> <h3 class="aside__title">Содержание</h3> <ul class="aside__list"> <li class="aside__item"><a href="#features" class="aside__link">Особенности</a></li> <li class="aside__item"><a href="#install" class="aside__link">Установка</a></li> <li class="aside__item"><a href="#config" class="aside__link">Конфигурация</a></li> <li class="aside__item"><a href="#liquid" class="aside__link">Liquid</a></li> <li class="aside__item"><a href="#post" class="aside__link">Пост</a></li> <li class="aside__item"><a href="#deploy" class="aside__link">Деплой</a></li> </ul> </div> <div class="aside__card"> <h3 class="aside__title">Официальный сайт</h3> <sl-button href="https://jekyllrb.com/" target="_blank" variant="primary" class="button button_block"> jekyllrb.com </sl-button> </div> </aside> </div><footer class="footer"> <div class="footer__inner"> <p class="footer__copyright">© 2025 Буренкова Полина Алексеевна. Учебный проект.</p> <ul class="footer__links"> <li class="footer__item"><a href="about.html" class="footer__link">О проекте</a></li> <li class="footer__item"><a href="contacts.html" class="footer__link">Контакты</a></li> </ul> </div> </footer><script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-core.min.js"></script><script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/autoloader/prism-autoloader.min.js"></script><script src="js/main.js" type="module"></script></body>
+</html>
