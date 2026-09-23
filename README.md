@@ -1,6 +1,7 @@
 # 🌐 SSG Review — учебный проект
 
 🔗 **Live-сайт:** https://polina222232.github.io/ssg-review/
+
 🔗 **Репозиторий:** https://github.com/polina222232/ssg-review
 
 ## 👤 Автор
