@@ -57,9 +57,12 @@
 </sl-drawer>
 
 <nav class="breadcrumbs" aria-label="Хлебные крошки">
-  <ol class="breadcrumbs__list">
-    <li class="breadcrumbs__item"><span class="breadcrumbs__current">Главная</span></li>
-  </ol>
+  <sl-breadcrumb>
+    <sl-breadcrumb-item>
+      <sl-icon slot="prefix" name="house"></sl-icon>
+      Главная
+    </sl-breadcrumb-item>
+  </sl-breadcrumb>
 </nav>
 
 <section class="hero hero_theme_gradient">
@@ -70,12 +73,16 @@
       статических сайтов, которые делают веб быстрее и безопаснее.
     </p>
     <div class="hero__actions">
-      <sl-button variant="primary" size="large" href="comparison.html">
-        <sl-icon slot="prefix" name="bar-chart"></sl-icon>Сравнить фреймворки
-      </sl-button>
-      <sl-button variant="default" size="large" href="video.html">
-        <sl-icon slot="prefix" name="play-circle"></sl-icon>Смотреть видео
-      </sl-button>
+      <a href="comparison.html" class="button-link">
+        <sl-button variant="primary" size="large">
+          <sl-icon slot="prefix" name="bar-chart"></sl-icon>Сравнить фреймворки
+        </sl-button>
+      </a>
+      <a href="video.html" class="button-link">
+        <sl-button variant="default" size="large">
+          <sl-icon slot="prefix" name="play-circle"></sl-icon>Смотреть видео
+        </sl-button>
+      </a>
     </div>
   </div>
 </section>
@@ -89,38 +96,69 @@
         Static Site Generator — инструмент, превращающий шаблоны и Markdown
         в готовые HTML-файлы на этапе сборки.
       </p>
-      <div class="card card_bordered">
-        <div class="card__body">
-          <p class="card__text">
-            SSG собирает все страницы заранее. Такой сайт не требует серверной
-            логики, базы данных или сложного хостинга. Результат — быстрый,
-            безопасный и SEO-дружественный продукт.
-          </p>
-        </div>
-      </div>
+      <sl-card class="card">
+        <p>
+          SSG собирает все страницы заранее. Такой сайт не требует серверной
+          логики, базы данных или сложного хостинга. Результат — быстрый,
+          безопасный и SEO-дружественный продукт.
+        </p>
+      </sl-card>
     </section>
 
     <section class="section">
       <h2 class="section__title">Три главных героя</h2>
       <sl-carousel pagination navigation loop class="carousel">
-        <sl-carousel-item>
+        <sl-carousel-item role="group" aria-label="Gatsby">
           <figure class="carousel__figure">
-            <img src="img/gatsby.webp" alt="Логотип Gatsby" title="Gatsby — React-based SSG"
-                 class="carousel__image" loading="lazy" width="800" height="450">
+            <img
+              src="img/gatsby-800.webp"
+              srcset="img/gatsby-400.webp 400w,
+                      img/gatsby-800.webp 800w,
+                      img/gatsby-1200.webp 1200w"
+              sizes="(max-width: 768px) 100vw,
+                     (max-width: 992px) 50vw,
+                     800px"
+              alt="Логотип Gatsby — React-based SSG"
+              title="Gatsby — React-based SSG"
+              class="carousel__image"
+              loading="lazy"
+              width="800" height="450">
             <figcaption class="carousel__caption">Gatsby — на базе React и GraphQL</figcaption>
           </figure>
         </sl-carousel-item>
-        <sl-carousel-item>
+        <sl-carousel-item role="group" aria-label="Hugo">
           <figure class="carousel__figure">
-            <img src="img/hugo.webp" alt="Логотип Hugo" title="Hugo — самый быстрый SSG на Go"
-                 class="carousel__image" loading="lazy" width="800" height="450">
+            <img
+              src="img/hugo-800.webp"
+              srcset="img/hugo-400.webp 400w,
+                      img/hugo-800.webp 800w,
+                      img/hugo-1200.webp 1200w"
+              sizes="(max-width: 768px) 100vw,
+                     (max-width: 992px) 50vw,
+                     800px"
+              alt="Логотип Hugo — самый быстрый SSG на Go"
+              title="Hugo — самый быстрый SSG на Go"
+              class="carousel__image"
+              loading="lazy"
+              width="800" height="450">
             <figcaption class="carousel__caption">Hugo — молниеносная сборка на Go</figcaption>
           </figure>
         </sl-carousel-item>
-        <sl-carousel-item>
+        <sl-carousel-item role="group" aria-label="Jekyll">
           <figure class="carousel__figure">
-            <img src="img/jekyll.webp" alt="Логотип Jekyll" title="Jekyll — классика для GitHub Pages"
-                 class="carousel__image" loading="lazy" width="800" height="450">
+            <img
+              src="img/jekyll-800.webp"
+              srcset="img/jekyll-400.webp 400w,
+                      img/jekyll-800.webp 800w,
+                      img/jekyll-1200.webp 1200w"
+              sizes="(max-width: 768px) 100vw,
+                     (max-width: 992px) 50vw,
+                     800px"
+              alt="Логотип Jekyll — классика для GitHub Pages"
+              title="Jekyll — классика для GitHub Pages"
+              class="carousel__image"
+              loading="lazy"
+              width="800" height="450">
             <figcaption class="carousel__caption">Jekyll — встроен в GitHub Pages</figcaption>
           </figure>
         </sl-carousel-item>
@@ -130,42 +168,34 @@
     <section class="section">
       <h2 class="section__title">Ключевые преимущества</h2>
       <div class="grid grid_cols_2">
-        <article class="card card_bordered">
-          <div class="card__header">
+        <sl-card class="card">
+          <div slot="header" class="card__header">
             <sl-icon name="lightning-charge" class="card__icon"></sl-icon>
             <h3 class="card__title">Скорость</h3>
           </div>
-          <div class="card__body">
-            <p class="card__text">Статика раздаётся с CDN мгновенно — никаких запросов к БД.</p>
-          </div>
-        </article>
-        <article class="card card_bordered">
-          <div class="card__header">
+          <p>Статика раздаётся с CDN мгновенно — никаких запросов к БД.</p>
+        </sl-card>
+        <sl-card class="card">
+          <div slot="header" class="card__header">
             <sl-icon name="shield-check" class="card__icon"></sl-icon>
             <h3 class="card__title">Безопасность</h3>
           </div>
-          <div class="card__body">
-            <p class="card__text">Нет серверной части — нечего взламывать и патчить.</p>
-          </div>
-        </article>
-        <article class="card card_bordered">
-          <div class="card__header">
+          <p>Нет серверной части — нечего взламывать и патчить.</p>
+        </sl-card>
+        <sl-card class="card">
+          <div slot="header" class="card__header">
             <sl-icon name="search" class="card__icon"></sl-icon>
             <h3 class="card__title">SEO</h3>
           </div>
-          <div class="card__body">
-            <p class="card__text">Чистый HTML легко индексируется поисковиками.</p>
-          </div>
-        </article>
-        <article class="card card_bordered">
-          <div class="card__header">
+          <p>Чистый HTML легко индексируется поисковиками.</p>
+        </sl-card>
+        <sl-card class="card">
+          <div slot="header" class="card__header">
             <sl-icon name="cloud-upload" class="card__icon"></sl-icon>
             <h3 class="card__title">Хостинг</h3>
           </div>
-          <div class="card__body">
-            <p class="card__text">GitHub Pages, Netlify, Vercel — бесплатно и просто.</p>
-          </div>
-        </article>
+          <p>GitHub Pages, Netlify, Vercel — бесплатно и просто.</p>
+        </sl-card>
       </div>
     </section>
 
@@ -205,16 +235,16 @@
       <div class="code-block">
         <div class="code-block__header">
           <span class="code-block__lang">bash</span>
-          <button class="code-block__copy" data-js="copy">Копировать</button>
+          <sl-button size="small" data-js="copy">Копировать</sl-button>
         </div>
         <pre class="code-block__body"><code class="language-bash"># Gatsby
-npm install -g gatsby-cli && gatsby new site
+npm install -g gatsby-cli &amp;&amp; gatsby new site
 
 # Hugo
-choco install hugo-extended -y && hugo new site site
+choco install hugo-extended -y &amp;&amp; hugo new site site
 
 # Jekyll
-gem install jekyll bundler && jekyll new site</code></pre>
+gem install jekyll bundler &amp;&amp; jekyll new site</code></pre>
       </div>
     </section>
 
@@ -228,8 +258,8 @@ gem install jekyll bundler && jekyll new site</code></pre>
   </main>
 
   <aside class="layout__aside" aria-label="Боковая панель">
-    <div class="aside__card">
-      <h3 class="aside__title">Навигация по разделам</h3>
+    <sl-card class="aside__card">
+      <h3 slot="header" class="aside__title">Навигация по разделам</h3>
       <ul class="aside__list">
         <li class="aside__item"><a href="gatsby.html" class="aside__link">Gatsby</a></li>
         <li class="aside__item"><a href="hugo.html" class="aside__link">Hugo</a></li>
@@ -237,13 +267,13 @@ gem install jekyll bundler && jekyll new site</code></pre>
         <li class="aside__item"><a href="comparison.html" class="aside__link">Сравнение</a></li>
         <li class="aside__item"><a href="code.html" class="aside__link">Примеры кода</a></li>
       </ul>
-    </div>
+    </sl-card>
 
-    <div class="aside__card">
-      <h3 class="aside__title">Подписка</h3>
+    <sl-card class="aside__card">
+      <h3 slot="header" class="aside__title">Подписка</h3>
       <form class="form" data-js="subscribe-form" novalidate>
         <div class="form__field">
-
+          <label class="form__label" for="aside-email">Email</label>
           <sl-input id="aside-email" name="email" type="email" placeholder="you@example.com" required class="form__input"></sl-input>
         </div>
         <div class="form__field">
@@ -253,16 +283,16 @@ gem install jekyll bundler && jekyll new site</code></pre>
           <sl-button type="submit" variant="success" class="button button_block">Подписаться</sl-button>
         </div>
       </form>
-    </div>
+    </sl-card>
 
-    <div class="aside__card">
-      <h3 class="aside__title">Полезные ссылки</h3>
+    <sl-card class="aside__card">
+      <h3 slot="header" class="aside__title">Полезные ссылки</h3>
       <ul class="aside__list">
         <li class="aside__item"><a href="https://www.gatsbyjs.com/" class="aside__link" target="_blank" rel="noopener">gatsbyjs.com</a></li>
         <li class="aside__item"><a href="https://gohugo.io/" class="aside__link" target="_blank" rel="noopener">gohugo.io</a></li>
         <li class="aside__item"><a href="https://jekyllrb.com/" class="aside__link" target="_blank" rel="noopener">jekyllrb.com</a></li>
       </ul>
-    </div>
+    </sl-card>
   </aside>
 </div>
 
@@ -272,12 +302,20 @@ gem install jekyll bundler && jekyll new site</code></pre>
     <ul class="footer__links">
       <li class="footer__item"><a href="about.html" class="footer__link">О проекте</a></li>
       <li class="footer__item"><a href="contacts.html" class="footer__link">Контакты</a></li>
-      <li class="footer__item"><a href="https://github.com/" class="footer__link" target="_blank" rel="noopener">GitHub</a></li>
+      <li class="footer__item"><a href="https://github.com/polina222232/ssg-review" class="footer__link" target="_blank" rel="noopener">GitHub</a></li>
     </ul>
     <div class="footer__social">
-      <sl-icon-button name="github" label="GitHub" href="https://github.com/" target="_blank"></sl-icon-button>
-      <sl-icon-button name="telegram" label="Telegram"></sl-icon-button>
-      <sl-icon-button name="envelope" label="Email"></sl-icon-button>
+      <sl-tooltip content="GitHub репозиторий">
+        <a href="https://github.com/polina222232/ssg-review" target="_blank" rel="noopener" class="icon-link">
+          <sl-icon-button name="github" label="GitHub"></sl-icon-button>
+        </a>
+      </sl-tooltip>
+      <sl-tooltip content="Telegram">
+        <sl-icon-button name="telegram" label="Telegram"></sl-icon-button>
+      </sl-tooltip>
+      <sl-tooltip content="Email">
+        <sl-icon-button name="envelope" label="Email"></sl-icon-button>
+      </sl-tooltip>
     </div>
   </div>
 </footer>
