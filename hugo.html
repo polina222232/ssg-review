@@ -56,10 +56,13 @@
 </sl-drawer>
 
 <nav class="breadcrumbs" aria-label="Хлебные крошки">
-  <ol class="breadcrumbs__list">
-    <li class="breadcrumbs__item"><a href="index.html" class="breadcrumbs__link">Главная</a></li>
-    <li class="breadcrumbs__item"><span class="breadcrumbs__current">Hugo</span></li>
-  </ol>
+  <sl-breadcrumb>
+    <sl-breadcrumb-item href="index.html">
+      <sl-icon slot="prefix" name="house"></sl-icon>
+      Главная
+    </sl-breadcrumb-item>
+    <sl-breadcrumb-item>Hugo</sl-breadcrumb-item>
+  </sl-breadcrumb>
 </nav>
 
 <div class="layout">
@@ -68,14 +71,19 @@
     <section class="section">
       <h1 class="section__title">Hugo</h1>
       <p class="section__subtitle">Самый быстрый генератор статических сайтов, написанный на Go.</p>
-      <div class="card card_bordered">
-        <div class="card__body">
-          <p class="card__text">
-            Hugo собирает тысячи страниц за доли секунды. Поставляется одним
-            бинарником без зависимостей — не нужен Node.js, Ruby или Python.
-            Идеален для документации, блогов и корпоративных сайтов.
-          </p>
-        </div>
+      <sl-card class="card">
+        <p>
+          Hugo собирает тысячи страниц за доли секунды. Поставляется одним
+          бинарником без зависимостей — не нужен Node.js, Ruby или Python.
+          Идеален для документации, блогов и корпоративных сайтов.
+        </p>
+      </sl-card>
+
+      <div class="tags">
+        <sl-tag variant="primary" size="small">Go</sl-tag>
+        <sl-tag variant="success" size="small">Скорость</sl-tag>
+        <sl-tag variant="neutral" size="small">SSG</sl-tag>
+        <sl-tag variant="warning" size="small">Один бинарник</sl-tag>
       </div>
     </section>
 
@@ -96,7 +104,7 @@
       <div class="code-block">
         <div class="code-block__header">
           <span class="code-block__lang">bash</span>
-          <button class="code-block__copy" data-js="copy">Копировать</button>
+          <sl-button size="small" data-js="copy">Копировать</sl-button>
         </div>
         <pre class="code-block__body"><code class="language-bash"># Windows (Chocolatey)
 choco install hugo-extended -y
@@ -114,7 +122,7 @@ cd my-site
 # Добавить тему
 git init
 git submodule add https://github.com/theNewDynamic/gohugo-theme-ananke themes/ananke
-echo "theme = 'ananke'" >> hugo.toml
+echo "theme = 'ananke'" &gt;&gt; hugo.toml
 
 # Запуск
 hugo server -D
@@ -129,7 +137,7 @@ hugo --minify</code></pre>
       <div class="code-block">
         <div class="code-block__header">
           <span class="code-block__lang">toml</span>
-          <button class="code-block__copy" data-js="copy">Копировать</button>
+          <sl-button size="small" data-js="copy">Копировать</sl-button>
         </div>
         <pre class="code-block__body"><code class="language-toml">baseURL = 'https://example.com/'
 languageCode = 'ru-ru'
@@ -170,7 +178,7 @@ theme = 'ananke'
       <div class="code-block">
         <div class="code-block__header">
           <span class="code-block__lang">html</span>
-          <button class="code-block__copy" data-js="copy">Копировать</button>
+          <sl-button size="small" data-js="copy">Копировать</sl-button>
         </div>
         <pre class="code-block__body"><code class="language-html">{{ define "main" }}
   &lt;h1&gt;{{ .Title }}&lt;/h1&gt;
@@ -190,7 +198,7 @@ theme = 'ananke'
       <div class="code-block">
         <div class="code-block__header">
           <span class="code-block__lang">html</span>
-          <button class="code-block__copy" data-js="copy">Копировать</button>
+          <sl-button size="small" data-js="copy">Копировать</sl-button>
         </div>
         <pre class="code-block__body"><code class="language-html">{{ define "main" }}
   &lt;article&gt;
@@ -214,7 +222,7 @@ theme = 'ananke'
       <div class="code-block">
         <div class="code-block__header">
           <span class="code-block__lang">html</span>
-          <button class="code-block__copy" data-js="copy">Копировать</button>
+          <sl-button size="small" data-js="copy">Копировать</sl-button>
         </div>
         <pre class="code-block__body"><code class="language-html">{{/* layouts/shortcodes/youtube.html */}}
 &lt;div class="video-wrapper"&gt;
@@ -236,7 +244,7 @@ theme = 'ananke'
       <div class="code-block">
         <div class="code-block__header">
           <span class="code-block__lang">yaml</span>
-          <button class="code-block__copy" data-js="copy">Копировать</button>
+          <sl-button size="small" data-js="copy">Копировать</sl-button>
         </div>
         <pre class="code-block__body"><code class="language-yaml">---
 title: "Обзор Hugo"
@@ -259,7 +267,7 @@ Hugo — самый быстрый SSG...</code></pre>
       <div class="code-block">
         <div class="code-block__header">
           <span class="code-block__lang">yaml</span>
-          <button class="code-block__copy" data-js="copy">Копировать</button>
+          <sl-button size="small" data-js="copy">Копировать</sl-button>
         </div>
         <pre class="code-block__body"><code class="language-yaml"># .github/workflows/hugo.yml
 name: Deploy Hugo to Pages
@@ -298,50 +306,50 @@ jobs:
     <section class="section">
       <h2 class="section__title">Плюсы и минусы</h2>
       <div class="grid grid_cols_2">
-        <article class="card card_bordered">
-          <div class="card__header">
+        <sl-card class="card">
+          <div slot="header" class="card__header">
             <sl-icon name="hand-thumbs-up" class="card__icon"></sl-icon>
             <h3 class="card__title">Плюсы</h3>
           </div>
-          <div class="card__body">
-            <ul class="list list_marker_check">
-              <li class="list__item">Молниеносная скорость</li>
-              <li class="list__item">Простая установка</li>
-              <li class="list__item">Нет зависимостей</li>
-              <li class="list__item">Мультиязычность</li>
-            </ul>
-          </div>
-        </article>
-        <article class="card card_bordered">
-          <div class="card__header">
+          <ul class="list list_marker_check">
+            <li class="list__item">Молниеносная скорость</li>
+            <li class="list__item">Простая установка</li>
+            <li class="list__item">Нет зависимостей</li>
+            <li class="list__item">Мультиязычность</li>
+          </ul>
+        </sl-card>
+        <sl-card class="card">
+          <div slot="header" class="card__header">
             <sl-icon name="hand-thumbs-down" class="card__icon"></sl-icon>
             <h3 class="card__title">Минусы</h3>
           </div>
-          <div class="card__body">
-            <ul class="list list_marker_check">
-              <li class="list__item">Go templates — не всем привычны</li>
-              <li class="list__item">Меньше плагинов, чем у Gatsby</li>
-              <li class="list__item">Темы иногда сложные</li>
-            </ul>
-          </div>
-        </article>
+          <ul class="list list_marker_check">
+            <li class="list__item">Go templates — не всем привычны</li>
+            <li class="list__item">Меньше плагинов, чем у Gatsby</li>
+            <li class="list__item">Темы иногда сложные</li>
+          </ul>
+        </sl-card>
       </div>
     </section>
 
     <nav class="pagination">
-      <sl-button href="gatsby.html" variant="default">
-        <sl-icon slot="prefix" name="arrow-left"></sl-icon>Назад: Gatsby
-      </sl-button>
-      <sl-button href="jekyll.html" variant="primary">
-        Далее: Jekyll<sl-icon slot="suffix" name="arrow-right"></sl-icon>
-      </sl-button>
+      <a href="gatsby.html" class="button-link">
+        <sl-button variant="default">
+          <sl-icon slot="prefix" name="arrow-left"></sl-icon>Назад: Gatsby
+        </sl-button>
+      </a>
+      <a href="jekyll.html" class="button-link">
+        <sl-button variant="primary">
+          Далее: Jekyll<sl-icon slot="suffix" name="arrow-right"></sl-icon>
+        </sl-button>
+      </a>
     </nav>
 
   </main>
 
   <aside class="layout__aside">
-    <div class="aside__card">
-      <h3 class="aside__title">Содержание</h3>
+    <sl-card class="aside__card">
+      <h3 slot="header" class="aside__title">Содержание</h3>
       <ul class="aside__list">
         <li class="aside__item"><a href="#features" class="aside__link">Особенности</a></li>
         <li class="aside__item"><a href="#install" class="aside__link">Установка</a></li>
@@ -351,13 +359,15 @@ jobs:
         <li class="aside__item"><a href="#frontmatter" class="aside__link">Front Matter</a></li>
         <li class="aside__item"><a href="#deploy" class="aside__link">Деплой</a></li>
       </ul>
-    </div>
-    <div class="aside__card">
-      <h3 class="aside__title">Официальный сайт</h3>
-      <sl-button href="https://gohugo.io/" target="_blank" variant="primary" class="button button_block">
-        gohugo.io
-      </sl-button>
-    </div>
+    </sl-card>
+    <sl-card class="aside__card">
+      <h3 slot="header" class="aside__title">Официальный сайт</h3>
+      <a href="https://gohugo.io/" target="_blank" rel="noopener" class="button-link">
+        <sl-button variant="primary" class="button button_block">
+          gohugo.io
+        </sl-button>
+      </a>
+    </sl-card>
   </aside>
 </div>
 
