@@ -3,14 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>FAQ | SSG Review</title>
-  <meta name="description" content="Ответы на популярные вопросы про SSG">
-  <link rel="icon" type="image/webp" href="img/gatsby-400.webp">
-
+  <title>Контакты | SSG Review</title>
+  <meta name="description" content="Свяжитесь с автором проекта SSG Review">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.15.0/cdn/themes/light.css">
   <script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.15.0/cdn/shoelace-autoloader.js"></script>
-
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/prism.css">
   <link rel="stylesheet" href="css/shoelace-override.css">
 </head>
 <body class="page">
@@ -63,7 +61,7 @@
       <sl-icon slot="prefix" name="house"></sl-icon>
       Главная
     </sl-breadcrumb-item>
-    <sl-breadcrumb-item>FAQ</sl-breadcrumb-item>
+    <sl-breadcrumb-item>Контакты</sl-breadcrumb-item>
   </sl-breadcrumb>
 </nav>
 
@@ -71,47 +69,128 @@
   <main class="layout__main">
 
     <section class="section">
-      <h1 class="section__title">Часто задаваемые вопросы</h1>
-      <p class="section__subtitle">Ответы на популярные вопросы про SSG.</p>
+      <h1 class="section__title">Контакты</h1>
+      <p class="section__subtitle">Свяжитесь с автором проекта через форму или соцсети.</p>
 
-      <sl-details summary="Что такое SSG?" open>
-        <p>Static Site Generator — инструмент, генерирующий HTML-страницы на этапе сборки из шаблонов и контента (Markdown, JSON, CMS).</p>
-      </sl-details>
+      <form class="form" data-js="contact-form" novalidate>
+        <div class="form__field">
+          <label class="form__label" for="name">Имя</label>
+          <sl-input id="name" name="name" placeholder="Ваше имя" required class="form__input"></sl-input>
+        </div>
 
-      <sl-details summary="Чем Hugo быстрее Jekyll?">
-        <p>Hugo написан на Go и компилируется в один бинарник. Jekyll — на Ruby, работает медленнее, особенно на больших проектах.</p>
-      </sl-details>
+        <div class="form__field">
+          <label class="form__label" for="email">Email</label>
+          <sl-input id="email" name="email" type="email" placeholder="you@example.com" required class="form__input"></sl-input>
+        </div>
 
-      <sl-details summary="Можно ли использовать Gatsby с CMS?">
-        <p>Да, Gatsby отлично интегрируется с Contentful, Strapi, Sanity, WordPress через GraphQL-плагины.</p>
-      </sl-details>
+        <div class="form__field">
+          <label class="form__label" for="topic">Тема</label>
+          <sl-select id="topic" name="topic" placeholder="Выберите тему" required class="form__input">
+            <sl-option value="gatsby">Gatsby</sl-option>
+            <sl-option value="hugo">Hugo</sl-option>
+            <sl-option value="jekyll">Jekyll</sl-option>
+            <sl-option value="other">Другое</sl-option>
+          </sl-select>
+        </div>
 
-      <sl-details summary="Где хостить статический сайт?">
-        <p>GitHub Pages, Netlify, Vercel, Cloudflare Pages — все бесплатны для личных проектов.</p>
-      </sl-details>
+        <div class="form__field">
+          <label class="form__label" for="message">Сообщение</label>
+          <sl-textarea id="message" name="message" rows="5" placeholder="Текст сообщения" required class="form__input"></sl-textarea>
+        </div>
 
-      <sl-details summary="Нужен ли сервер для SSG?">
-        <p>Нет. Собранный сайт — это набор HTML/CSS/JS-файлов, которые можно раздавать с любого CDN или статического хостинга.</p>
-      </sl-details>
+        <div class="form__field">
+          <sl-checkbox name="agree" required>Согласен с обработкой персональных данных</sl-checkbox>
+        </div>
 
-      <sl-details summary="Какой SSG выбрать новичку?">
-        <p>Если вы знакомы с JS/React — Gatsby. Если хотите максимальную скорость и простоту — Hugo. Если нужен GitHub Pages «из коробки» — Jekyll.</p>
-      </sl-details>
+        <div class="form__actions">
+          <sl-button type="submit" variant="primary" size="large" class="button button_primary">Отправить</sl-button>
+          <sl-button type="reset" variant="default" size="large" class="button button_secondary">Очистить</sl-button>
+        </div>
+      </form>
+    </section>
 
-      <sl-details summary="Что такое Front Matter?">
-        <p>Это YAML/TOML/JSON-блок в начале Markdown-файла с метаданными: заголовок, дата, теги, автор и т. д.</p>
-      </sl-details>
+    <section class="section">
+      <h2 class="section__title">Прямые контакты</h2>
+      <div class="grid grid_cols_2">
+        <sl-card class="card">
+          <div slot="header" class="card__header">
+            <sl-icon name="telegram" class="card__icon"></sl-icon>
+            <h3 class="card__title">Telegram</h3>
+          </div>
+          <p>Пишите в Telegram — отвечаю быстро.</p>
+          <a href="https://t.me/Polina_Burenkova" target="_blank" rel="noopener" class="button-link">
+            <sl-button variant="primary" class="button button_block">
+              @Polina_Burenkova
+            </sl-button>
+          </a>
+        </sl-card>
+
+        <sl-card class="card">
+          <div slot="header" class="card__header">
+            <sl-icon name="envelope" class="card__icon"></sl-icon>
+            <h3 class="card__title">Email</h3>
+          </div>
+          <p>Для официальных запросов и сотрудничества.</p>
+          <a href="mailto:polinaburenkova01@gmail.com" class="button-link">
+            <sl-button variant="primary" class="button button_block">
+              polinaburenkova01@gmail.com
+            </sl-button>
+          </a>
+        </sl-card>
+
+        <sl-card class="card">
+          <div slot="header" class="card__header">
+            <sl-icon name="github" class="card__icon"></sl-icon>
+            <h3 class="card__title">GitHub</h3>
+          </div>
+          <p>Исходный код проекта и других работ.</p>
+          <a href="https://github.com/polina222232" target="_blank" rel="noopener" class="button-link">
+            <sl-button variant="primary" class="button button_block">
+              github.com/polina222232
+            </sl-button>
+          </a>
+        </sl-card>
+
+        <sl-card class="card">
+          <div slot="header" class="card__header">
+            <sl-icon name="globe" class="card__icon"></sl-icon>
+            <h3 class="card__title">Live-сайт</h3>
+          </div>
+          <p>Проект опубликован на GitHub Pages.</p>
+          <a href="https://polina222232.github.io/ssg-review/" target="_blank" rel="noopener" class="button-link">
+            <sl-button variant="primary" class="button button_block">
+              Открыть сайт
+            </sl-button>
+          </a>
+        </sl-card>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2 class="section__title">Карта сайта</h2>
+      <ul class="list list_marker_check">
+        <li class="list__item"><a href="index.html">Главная</a></li>
+        <li class="list__item"><a href="gatsby.html">Gatsby</a></li>
+        <li class="list__item"><a href="hugo.html">Hugo</a></li>
+        <li class="list__item"><a href="jekyll.html">Jekyll</a></li>
+        <li class="list__item"><a href="comparison.html">Сравнение</a></li>
+        <li class="list__item"><a href="code.html">Примеры кода</a></li>
+        <li class="list__item"><a href="usage.html">Кейсы</a></li>
+        <li class="list__item"><a href="video.html">Видео</a></li>
+        <li class="list__item"><a href="faq.html">FAQ</a></li>
+        <li class="list__item"><a href="about.html">О проекте</a></li>
+      </ul>
     </section>
 
     <nav class="pagination">
-      <a href="video.html" class="button-link">
+      <a href="faq.html" class="button-link">
         <sl-button variant="default">
-          <sl-icon slot="prefix" name="arrow-left"></sl-icon>Назад: Видео
+          <sl-icon slot="prefix" name="arrow-left"></sl-icon>Назад: FAQ
         </sl-button>
       </a>
-      <a href="contacts.html" class="button-link">
+      <a href="about.html" class="button-link">
         <sl-button variant="primary">
-          Далее: Контакты<sl-icon slot="suffix" name="arrow-right"></sl-icon>
+          Далее: О проекте<sl-icon slot="suffix" name="arrow-right"></sl-icon>
         </sl-button>
       </a>
     </nav>
@@ -120,11 +199,41 @@
 
   <aside class="layout__aside">
     <sl-card class="aside__card">
-      <h3 slot="header" class="aside__title">Не нашли ответ?</h3>
-      <p>Напишите нам через форму обратной связи.</p>
-      <a href="contacts.html" class="button-link">
-        <sl-button variant="primary" class="button button_block">Связаться</sl-button>
-      </a>
+      <h3 slot="header" class="aside__title">Автор</h3>
+      <div class="author">
+        <sl-avatar image="img/avatar.webp" label="Буренкова Полина" initials="БП"></sl-avatar>
+        <div class="author__info">
+          <strong>Буренкова Полина</strong>
+          <span>Студент</span>
+        </div>
+      </div>
+      <sl-divider></sl-divider>
+      <ul class="aside__list">
+        <li class="aside__item">
+          <sl-icon name="telegram"></sl-icon>
+          <a href="https://t.me/Polina_Burenkova" class="aside__link" target="_blank" rel="noopener">
+            @Polina_Burenkova
+          </a>
+        </li>
+        <li class="aside__item">
+          <sl-icon name="envelope"></sl-icon>
+          <a href="mailto:polinaburenkova01@gmail.com" class="aside__link">
+            polinaburenkova01@gmail.com
+          </a>
+        </li>
+        <li class="aside__item">
+          <sl-icon name="github"></sl-icon>
+          <a href="https://github.com/polina222232" class="aside__link" target="_blank" rel="noopener">
+            github.com/polina222232
+          </a>
+        </li>
+      </ul>
+    </sl-card>
+
+    <sl-card class="aside__card">
+      <h3 slot="header" class="aside__title">Время ответа</h3>
+      <p>Обычно отвечаю в течение 24 часов.</p>
+      <sl-progress-bar value="90" label="Скорость ответа"></sl-progress-bar>
     </sl-card>
   </aside>
 </div>
@@ -135,8 +244,27 @@
     <ul class="footer__links">
       <li class="footer__item"><a href="about.html" class="footer__link">О проекте</a></li>
       <li class="footer__item"><a href="contacts.html" class="footer__link">Контакты</a></li>
-      <li class="footer__item"><a href="https://github.com/polina222232/ssg-review" class="footer__link" target="_blank" rel="noopener">GitHub</a></li>
+      <li class="footer__item">
+        <a href="https://github.com/polina222232/ssg-review" class="footer__link" target="_blank" rel="noopener">GitHub</a>
+      </li>
     </ul>
+    <div class="footer__social">
+      <sl-tooltip content="GitHub репозиторий">
+        <a href="https://github.com/polina222232/ssg-review" target="_blank" rel="noopener" class="icon-link">
+          <sl-icon-button name="github" label="GitHub"></sl-icon-button>
+        </a>
+      </sl-tooltip>
+      <sl-tooltip content="Telegram @Polina_Burenkova">
+        <a href="https://t.me/Polina_Burenkova" target="_blank" rel="noopener" class="icon-link">
+          <sl-icon-button name="telegram" label="Telegram"></sl-icon-button>
+        </a>
+      </sl-tooltip>
+      <sl-tooltip content="Email">
+        <a href="mailto:polinaburenkova01@gmail.com" class="icon-link">
+          <sl-icon-button name="envelope" label="Email"></sl-icon-button>
+        </a>
+      </sl-tooltip>
+    </div>
   </div>
 </footer>
 
