@@ -1,0 +1,57 @@
+/* Кастомизация Shoelace */
+
+:root {
+  --sl-color-primary-600: #4f46e5;
+  --sl-color-primary-700: #3730a3;
+  --sl-border-radius-medium: 12px;
+  --sl-font-sans: 'Inter', system-ui, sans-serif;
+}
+
+sl-button::part(base) {
+  border-radius: var(--radius);
+  font-weight: 500;
+  transition: transform .15s ease, box-shadow .15s ease;
+}
+sl-button::part(base):hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(79, 70, 229, .2);
+}
+
+sl-card::part(base) {
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+}
+
+sl-input::part(base),
+sl-textarea::part(base),
+sl-select::part(combobox) {
+  border-radius: var(--radius-sm);
+}
+
+sl-dialog::part(panel) { border-radius: var(--radius); }
+sl-dialog::part(title) { font-weight: 700; color: var(--text); }
+
+sl-drawer::part(panel) { --size: 320px; }
+sl-drawer::part(header) { border-bottom: 1px solid var(--border); }
+
+sl-alert::part(base) { border-radius: var(--radius); }
+
+sl-details::part(base) {
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+  margin-bottom: .75rem;
+  background: var(--bg-alt);
+}
+sl-details::part(summary) { font-weight: 600; padding: .75rem 1rem; }
+sl-details::part(content) { padding: 0 1rem 1rem; }
+
+sl-carousel::part(navigation-button) {
+  background: rgba(79, 70, 229, .8);
+}
+sl-carousel::part(pagination-item) { background: var(--brand); }
+
+sl-badge::part(base) { border-radius: 999px; }
+
+sl-tab-group::part(base) { --track-width: 2px; }
+sl-tab::part(base) { font-weight: 500; }
